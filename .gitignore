@@ -1,0 +1,26 @@
+# Credentials & Secrets (Never commit)
+.env
+*.env
+!*.env.example
+*.sc
+*.pem
+*.key
+credentials*.json
+service-account*.json
+
+# Runtime State & Logs
+*.log
+/tmp/
+.*_state.json
+*_state.json
+
+# Local Environment Configs (Use *.example.conf in version control)
+environments.conf
+tunnels.conf
+
+# Python Virtual Environments & Cache
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/

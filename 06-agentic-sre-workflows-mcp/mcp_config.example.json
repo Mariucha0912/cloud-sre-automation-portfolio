@@ -1,0 +1,49 @@
+{
+  "_comment": "Copyright (c) 2026 Mariucha de Paula Rocha - All Rights Reserved. Sanitized MCP Hub Template (Zero-Secrets via jq runtime injection).",
+  "mcpServers": {
+    "gcloud-remote": {
+      "command": "npx",
+      "args": ["-y", "@google-cloud/gcloud-mcp"],
+      "env": {
+        "GOOGLE_APPLICATION_CREDENTIALS": "/home/engineer/.config/gcloud/application_default_credentials.json"
+      }
+    },
+    "datacloud_bigquery": {
+      "serverUrl": "https://bigquery.googleapis.com/mcp"
+    },
+    "datacloud_cloud-sql": {
+      "serverUrl": "https://sqladmin.googleapis.com/mcp"
+    },
+    "knowledge_catalog": {
+      "serverUrl": "https://dataplex.googleapis.com/mcp"
+    },
+    "tabularis": {
+      "command": "tabularis-mcp",
+      "args": ["--config", "/home/engineer/.config/tabularis/connections.json"],
+      "env": {
+        "IAP_LOCAL_HOST": "127.0.0.1"
+      }
+    },
+    "cicd-pipelines": {
+      "command": "npx",
+      "args": ["-y", "@devops/cicd-mcp-server"],
+      "env": {
+        "API_TOKEN": "${INJECTED_VIA_JQ_FROM_LOCAL_VAULT}",
+        "WORKSPACE": "acme-cloud-ops"
+      }
+    },
+    "cloudflare-edge": {
+      "command": "npx",
+      "args": ["-y", "@cloudflare/mcp-server-cloudflare"],
+      "env": {
+        "CLOUDFLARE_API_TOKEN": "${INJECTED_VIA_JQ_FROM_LOCAL_VAULT}"
+      }
+    },
+    "developer-knowledge": {
+      "serverUrl": "https://developerknowledge.googleapis.com/mcp"
+    },
+    "cloudflare-docs": {
+      "serverUrl": "https://docs.mcp.cloudflare.com/sse"
+    }
+  }
+}
